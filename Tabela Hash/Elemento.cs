@@ -9,8 +9,7 @@ namespace Tabela_Hash
     class Elemento:IDado
     {
         public char Letra { get; set; }
-        public Elemento proximo;
-        public bool habilitado;
+        public Elemento proximo;        
 
         public Elemento(char dado)
         {

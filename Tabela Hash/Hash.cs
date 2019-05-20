@@ -16,55 +16,32 @@ namespace Tabela_Hash
             dados = new Lista[Tam_Max];
         }
 
+        // Calcula a posição do vetor dados na qual o 'char' será armazenado
+        // baseado no resto da divisão por um número primo
         private int FuncaoHash(int chave)
         {
             return chave % Tam_Max;
         }
 
-        //private int Colisao(int pos)
-        //{
-        //    while (!dados[pos].Vazia)
-        //    {
-        //        pos++;
-        //        pos = pos % Tam_Max;
-        //    }
-        //    return pos;
-        //}
-
-        //public void Inserir(IDado novo)
-        //{
-        //    int auxPos = FuncaoHash(novo.Letra);
-        //    auxPos = Colisao(auxPos);
-
-        //    dados[auxPos].Inserir(novo);
-        //}
-
-        //New
-
-        public void Inserir(IDado dado)
+        // Testa se a letra a ser inserida já não foi armazenada
+        private bool Colisao(IDado dado)
         {
-            var posicao = (FuncaoHash(dado.Letra));
-
-            if (dados[posicao] == null)
-            {
-                dados[posicao] = new Lista();
-                dados[posicao].Inserir(dado);
-            }
-            else
-            {
-                dados[posicao].Inserir(dado);
-            }
+            return Buscar(dado.Letra) == null;                            
         }
 
-        //public IDado Buscar(char letra)
-        //{
-        //    int auxPos = FuncaoHash(letra);
-        //    IDado auxItem = ColisaoBusca(auxPos, letra);
-        //    return auxItem;
-        //}
+        // Quarda um caracter no vetor de dados
+        public void Inserir(IDado dado)
+        {
+            var posicao = (FuncaoHash(dado.Letra)); // calcula a posição na qual o Hash será armazenado
 
-        //New
+            if (dados[posicao] == null) // instancia a posição do vetor dados caso necessário  
+                dados[posicao] = new Lista();
 
+            if (!Colisao(dado)) // Só armazena o caracter se ele já não estiver quardado
+                dados[posicao].Inserir(dado);
+        }
+
+        // Verifica se um caracter está no vetor
         public IDado Buscar(char letra)
         {
             IDado aux = dados[FuncaoHash(letra)].Localizar(letra);
@@ -74,25 +51,5 @@ namespace Tabela_Hash
             else
                 return dados[FuncaoHash(letra)].Localizar(letra);
         }
-
-        //private IDado ColisaoBusca(int pos, char letra)
-        //{
-        //    while (dados[pos] != null)
-        //    {
-        //        if (dados[pos].Localizar(letra).Equals(letra))
-        //        {
-        //            if (!dados[pos].Vazia)
-        //                return dados[pos];
-        //            else
-        //                return null;
-        //        }
-        //        else
-        //        {
-        //            pos++;
-        //            pos = pos % Tam_Max;
-        //        }
-        //        return dados[pos];
-        //    }
-        //}
     }
 }

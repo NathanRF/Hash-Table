@@ -38,49 +38,6 @@ namespace Tabela_Hash
             }
         }
 
-        public IDado Remover(char letra)
-        {
-            if (this.Vazia) return null;
-
-            Elemento aux = this.first;
-
-            while ((aux.proximo != null) && (!aux.proximo.Letra.Equals(letra)))
-            {
-                aux = aux.proximo;
-
-                if (aux.proximo == null) return null;
-                else
-                {
-                    Elemento auxRet = aux.proximo;
-                    aux.proximo = auxRet.proximo;
-                    if (auxRet == this.last)
-                        this.last = aux;
-                    else
-                        auxRet.proximo = null;
-
-                    return (IDado)auxRet;
-                }
-            }
-            return null;
-        }
-
-        //public IDado Localizar(char letra)
-        //{
-        //    int posAux = 0;
-        //    Elemento aux = first;
-
-        //    while ((aux != null) && (!aux.Letra.Equals(letra)))
-        //    {
-        //        aux = aux.proximo;
-        //        posAux++;
-        //    }
-
-        //    if (aux == null)
-        //        return null;
-        //    else
-        //        return (IDado)aux;
-        //}
-
         public IDado Localizar(char Letra)
         {
             Elemento aux;
