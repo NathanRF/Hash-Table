@@ -49,7 +49,7 @@ namespace Tabela_Hash
             if (aux == null)
                 return null;
             else
-                return dados[FuncaoHash(letra)].Localizar(letra);
+                return aux;
         }
     }
 }
