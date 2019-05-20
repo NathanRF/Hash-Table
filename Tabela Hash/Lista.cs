@@ -42,7 +42,7 @@ namespace Tabela_Hash
         {
             Elemento aux;
 
-            aux = first.proximo;
+            aux = first;
             while(aux != null && aux.Letra != Letra)
             {
                 aux = aux.proximo;

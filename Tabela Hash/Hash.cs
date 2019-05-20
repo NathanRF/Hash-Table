@@ -26,7 +26,7 @@ namespace Tabela_Hash
         // Testa se a letra a ser inserida já não foi armazenada
         private bool Colisao(IDado dado)
         {
-            return Buscar(dado.Letra) == null;                            
+            return Buscar(dado.Letra) != null;                            
         }
 
         // Quarda um caracter no vetor de dados

@@ -14,6 +14,7 @@ namespace Tabela_Hash
         public Elemento(char dado)
         {
             this.Letra = dado;
+            proximo = null;
         }
     }
 }
